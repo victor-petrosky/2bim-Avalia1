@@ -1,27 +1,30 @@
 # Desenho Assinado
 
-Página que recebe um número inteiro entre 1 e 100 e devolve uma figura em SVG, assinada com um e-mail.
+Aplicação com login Google Identity Services e geração de SVG no servidor.
+O navegador envia o número para POST /api/desenho com o ID token no cabeçalho Authorization: Bearer.
+O servidor valida o token no Google, confere aud e email_verified e obtém o e-mail da assinatura.
 
-A figura é a tabuada modular no círculo: 240 pontos igualmente espaçados numa circunferência, com cada ponto `i` ligado ao ponto `(k * i) mod 240`, em que `k = número + 1`. O número 1 produz uma cardioide, o 2 uma nefroide, e cada valor gera uma figura diferente.
+## Estrutura
 
-## Estado inicial
+- public/: interface e cliente da API.
+- lib/desenho.js: implementação original preservada.
+- functions/api/desenho.js: validação e geração do SVG.
+- functions/api/config.js: fornece o Client ID público ao navegador.
 
-Nesta versão tudo acontece no navegador. O arquivo `public/desenho.js` contém a função `gerarDesenho(numero, email)`, e o e-mail é digitado pelo usuário num campo do formulário.
+## Publicação
 
-```
-public/
-  index.html    formulário com os campos número e e-mail
-  style.css     aparência da página
-  script.js     lê o formulário e chama gerarDesenho
-  desenho.js    gera o SVG (função pura, sem DOM)
-```
+Cloudflare Pages conectado à branch main.
+Framework: None. Comando de build: vazio. Diretório de saída: public.
+Configurar GOOGLE_CLIENT_ID no ambiente de produção e reimplantar.
 
-## Publicação no Cloudflare Pages
+## Evidência
 
-Framework preset: `None`. Build command: vazio. Build output directory: `public`.
+Após publicar e autenticar, gerar o número 79, baixar o SVG e adicionar em evidencias/exemplo.svg.
 
-## Identificação (preencha após o fork)
+## Identificação
 
-Nome: 
-RA: 
-URL: https://
+Nome: Victor Petrosky
+
+RA: 2026108079
+
+URL: PREENCHER_APOS_PUBLICAR
