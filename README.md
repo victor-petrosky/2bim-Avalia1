@@ -27,4 +27,4 @@ Nome: Victor Petrosky
 
 RA: 2026108079
 
-URL: PREENCHER_APOS_PUBLICAR
+URL: https://2bim-avalia1-dek.pages.dev
